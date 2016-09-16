@@ -13,7 +13,7 @@ functionality | method | endpoint
 [reset port](#reset-port) | GET | `/node/<node-id>/allowed-channels`
 [enable pairing for switch](#enable-pairing-for-switch) | GET | `/node/<node-id>/enable_pairing`
 [expedite upgrade for switch](#expedite-upgrade-for-switch) | GET | `/node/<node-id>/expedite_upgrade`
-[list switch-related network settings](#list-switch-related-settings) | GET |  `/node/does_mac_exist?
+[list switch-related network settings](#list-switch-related-settings) | MEC |  `/node/does_mac_exist?`
 [update switch-related network settings](#update-switch-related-settings) | HECK | `/wha/wha`
 [list allowed firmware](#list-allowed-firmware) | SHECK | `ma/ma`
 
@@ -564,68 +564,112 @@ Note the use of error code 1009 to indicate success.
 
  <a name="reboot-switch"></a>
 ### reboot switch
-`GET /node/<node-id>/reboot`
+`GET /switch/<switch-id>/reboot`
 
-Reboot an Access Point.
+Reboot a switch.
 
 ##### example request
-`GET https://api.cloudtrax.com/node/123456/reboot`
+`GET https://api.cloudtrax.com/switch/123456/reboot`
 
 ##### output
 
-*API in flux at this point.*
+The API returns either an HTTP status code 200 on success or 4xx in the case of a failure.
 
  <a name="reset-port"></a>
 ### reset port
-`GET /node/<node-id>/reboot`
+`GET /switch/<switch-id>/reset_port/<port_number>`
 
-Reboot an Access Point.
+Reset a port.
 
 ##### example request
-`GET https://api.cloudtrax.com/node/123456/reboot`
+`GET https://api.cloudtrax.com/switch/123456/reset_port/1`
 
 ##### output
 
-*API in flux at this point.*
-
+The API either returns HTTP status code 200 (success) or an HTTP error and JSON describing the error in case of failure.  [@@@ ??? ]
 
  <a name="enable-pairing-for-switch"></a>
 ### enable pairing for switch
-`GET /node/<node-id>/enable_pairing`
-
-Newly added Access Points need to be paired with the network. Normally CloudTrax does this automatically, but in case an Access Point has been "re-flashed", it might be necessary to call this endpoint.
+`GET /switch/<switch-id>/enable_pairing`
 
 ##### example request
-`GET https://api.cloudtrax.com/node/123456/enable_pairing`
+`GET https://api.cloudtrax.com/switch/123456/enable_pairing`
+
+##### output
+
+The API either returns HTTP status code 200 (success) or an HTTP error and JSON describing the error in case of failure. 
 
  <a name="expedite-upgrade-for-switch"></a>
 ### expedite upgrade for switch
-`GET /node/<node-id>/expedite_upgrade`
+`GET /switch/<switch-id>/expedite_upgrade`
 
-Assuming that firmware upgrades are enabled for a network, CloudTrax will attempt to upgrade any Access Points needing firmware upgrades during the specified maintenance window. Setting the `expedite_upgrade` flag asks CloudTrax to attempt the upgrade as soon as possible, disregarding the settings for the maintenance window.
+If upgrades are not disabled, this flag forces an update outside the normally scheduled maintenance window.
+
+##### example request
+`GET https://api.cloudtrax.com/switch/123456/expedite_upgrade`
+
+##### output
+
+The API either returns HTTP status code 200 (success) or an HTTP error and JSON describing the error in case of failure. 
 
 <a name="list-switch-related-settings"></a>
 ### list switch-related network settings
-`GET /node/does_mac_exist?mac=<mac>`
-
-Call this endpoint as a double-check when a user is entering the MAC of an Access Point into the system, prior to the node actually being physically attached and checked in.
+`GET /switch/network/<network_id>/settings`
 
 ##### example request
+`GET https://api.cloudtrax.com/switch/network/123456/settings`
 
-`GET https://api.cloudtrax.com/node/does_mac_exist?mac=ac:86:74:aa:aa:aa`
+##### output
+
+The API either returns HTTP status code 200 (success) if the request is successful, along with a JSON package of the settings, otherwise an error explaining what prevented the operation in the case of failure. 
 
 ##### example output
 ````json
-{ 
-	"node_exists" : false 
+{
+  "disable_upgrade": false,
+  "enable_snmp": true,
+  "community":"blabla",
+  "firmware": [
+    {
+      "OMS24": {
+        "build": "IMG-0.00.03",
+        "tag": "v3" 
+      }
+    },
+    {
+      "OMS8": {
+        "build": "IMG-0.00.02",
+        "tag": "phase1" 
+      }
+    },
+    {
+      "OMS48": {
+        "build": "IMG-0.00.02",
+        "tag": "phase1" 
+      }
+    }
+  ]
 }
 ````
 
+###### Top level properties
+`disable_upgrade` | indicates whether the switches on this network will automatically upgrade their firmware.
+`enable_snmp` | indicates whether or not this network allows snmp communities.
+`community` | the name assigned to this community.
+`firmware` | lists the firmware currently running on each switch model on this network.
+
+###### Firmware
+This section is organized as a map of model name to properties.
+
+`tag` | the firmware tag running on the relevant model on this network.
+`build` | the firmware build running on the relevant model on this network.
+
+
 <a name="update-switch-related-settings"></a>
 ### update switch-related network settings
-`GET /node/does_mac_exist?mac=<mac>`
+`PUT /switch/network/<network_id>/settings`
 
 
 <a name="list_allowed-firmware"></a>
 ### list allowed firmware
-
+`GET /switch/network/<network_id>/allowed_firmware`
