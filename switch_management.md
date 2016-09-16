@@ -623,7 +623,7 @@ Call this endpoint as a double-check when a user is entering the MAC of an Acces
 <a name="update-switch-related-settings"></a>
 ### update switch-related network settings
 `GET /node/does_mac_exist?mac=<mac>`
-````
+
 
 <a name="list_allowed-firmware"></a>
 ### list allowed firmware
