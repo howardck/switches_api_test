@@ -604,7 +604,7 @@ Newly added Access Points need to be paired with the network. Normally CloudTrax
 
 Assuming that firmware upgrades are enabled for a network, CloudTrax will attempt to upgrade any Access Points needing firmware upgrades during the specified maintenance window. Setting the `expedite_upgrade` flag asks CloudTrax to attempt the upgrade as soon as possible, disregarding the settings for the maintenance window.
 
-<a name="#list-switch-related-settings"></a>
+<a name="list-switch-related-settings"></a>
 ### list switch-related network settings
 `GET /node/does_mac_exist?mac=<mac>`
 
@@ -620,11 +620,11 @@ Call this endpoint as a double-check when a user is entering the MAC of an Acces
 	"node_exists" : false 
 }
 
-<a name="#update-switch-related-settings"></a>
+<a name="update-switch-related-settings"></a>
 ### update switch-related network settings
 `GET /node/does_mac_exist?mac=<mac>`
 ````
 
-<a name="#list_allowed-firmware"></a>
+<a name="list_allowed-firmware"></a>
 ### list allowed firmware
 
