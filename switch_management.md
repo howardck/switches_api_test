@@ -9,11 +9,12 @@ functionality | method | endpoint
 [update switch](#update-switch) | PUT | `/switch/<switch-id>`
 [get switch](#get-node) | GET | `/switch/<switch-id>`
 [delete switch](#delete-switch) | DELETE | `/switch/<switch-id>`
-[reboot switch](#reboot-node) | GET | `/node/<node-id>/reboot`
-[reset switch](#get-allowed-channels-for-node) | GET | `/node/<node-id>/allowed-channels`
-[enable pairing for switch](#enable-pairing-for-node) | GET | `/node/<node-id>/enable_pairing`
-[expedite upgrade for switch](#expedite-upgrade-for-node) | GET | `/node/<node-id>/expedite_upgrade`
-[update switch-related network settings](#does-ap-mac-already-exist) | GET |  `/node/does_mac_exist?mac=<mac>`
+[reboot switch](#reboot-switch) | GET | `/node/<node-id>/reboot`
+[reset port](#reset-port) | GET | `/node/<node-id>/allowed-channels`
+[enable pairing for switch](#enable-pairing-for-switch) | GET | `/node/<node-id>/enable_pairing`
+[expedite upgrade for switch](#expedite-upgrade-for-switch) | GET | `/node/<node-id>/expedite_upgrade`
+[list switch-related network settings](#list-switch-related-settings) | GET |  `/node/does_mac_exist?
+[update switch-related network settings](#update-switch-related-settings) | HECK | `/wha/wha`
 [list allowed firmware](#list-allowed-firmware)
 
 
@@ -562,8 +563,8 @@ Note the use of error code 1009 to indicate success.
 }
 ````
 
- <a name="reboot-node"></a>
-### reboot node
+ <a name="reboot-switch"></a>
+### reboot switch
 `GET /node/<node-id>/reboot`
 
 Reboot an Access Point.
@@ -575,116 +576,22 @@ Reboot an Access Point.
 
 *API in flux at this point.*
 
- <a name="get-allowed-channels-for-node"></a>
-### get allowed channels for node
-`GET /node/<node-id>/allowed-channels`
+ <a name="reset-port"></a>
+### reset port
+`GET /node/<node-id>/reboot`
 
-Returns all allowed channels for a node for a particular country, defaulting to the country code for the node that's stored in the database. You can specify a different country with the query-string "country" parameter, using one of the two-letter country codes specified by [ISO 3166](http://www.iso.org/iso/home/standards/country_codes.htm).
-
-##### example request
-`GET https://api.cloudtrax.com/node/12345/allowed_channels`
-
-##### example output
-````json
-{
-    "channels": {
-        "2_4GHz": [
-            {
-                "channel": 10,
-                "ht_modes": [
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 9,
-                "ht_modes": [
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 8,
-                "ht_modes": [
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 7,
-                "ht_modes": [
-                    "HT40+",
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 6,
-                "ht_modes": [
-                    "HT40+",
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 5,
-                "ht_modes": [
-                    "HT40+",
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 4,
-                "ht_modes": [
-                    "HT40+",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 3,
-                "ht_modes": [
-                    "HT40+",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 11,
-                "ht_modes": [
-                    "HT40-",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 2,
-                "ht_modes": [
-                    "HT40+",
-                    "HT20" 
-                ]
-            },
-            {
-                "channel": 1,
-                "ht_modes": [
-                    "HT40+",
-                    "HT20" 
-                ]
-            }
-        ]
-    }
-}
-````
-
- <a name="reset-encryption-key-for-node"></a>
-### reset encryption key for node
-`GET /node/<node-id>/reset_encrypt_key`
-
-Resets the encryption key used by an Access Point. This should be done when a Access Point need to be re-paired.
+Reboot an Access Point.
 
 ##### example request
-`GET https://api.cloudtrax.com/node/123456/reset_encrypt_key`
+`GET https://api.cloudtrax.com/node/123456/reboot`
 
- <a name="enable-pairing-for-node"></a>
-### enable pairing for node
+##### output
+
+*API in flux at this point.*
+
+
+ <a name="enable-pairing-for-switch"></a>
+### enable pairing for switch
 `GET /node/<node-id>/enable_pairing`
 
 Newly added Access Points need to be paired with the network. Normally CloudTrax does this automatically, but in case an Access Point has been "re-flashed", it might be necessary to call this endpoint.
@@ -692,14 +599,14 @@ Newly added Access Points need to be paired with the network. Normally CloudTrax
 ##### example request
 `GET https://api.cloudtrax.com/node/123456/enable_pairing`
 
- <a name="expedite-upgrade-for-node"></a>
-### expedite upgrade for node
+ <a name="expedite-upgrade-for-switch"></a>
+### expedite upgrade for switch
 `GET /node/<node-id>/expedite_upgrade`
 
 Assuming that firmware upgrades are enabled for a network, CloudTrax will attempt to upgrade any Access Points needing firmware upgrades during the specified maintenance window. Setting the `expedite_upgrade` flag asks CloudTrax to attempt the upgrade as soon as possible, disregarding the settings for the maintenance window.
 
-<a name="does-ap-mac-already-exist"></a>
-### does an AP with address MAC already exist?
+<a name="#list-switch-related-settings"></a>
+### list switch-related network settings
 `GET /node/does_mac_exist?mac=<mac>`
 
 Call this endpoint as a double-check when a user is entering the MAC of an Access Point into the system, prior to the node actually being physically attached and checked in.
@@ -713,5 +620,12 @@ Call this endpoint as a double-check when a user is entering the MAC of an Acces
 { 
 	"node_exists" : false 
 }
+
+<a name="#update-switch-related-settings"></a>
+### update switch-related network settings
+`GET /node/does_mac_exist?mac=<mac>`
 ````
+
+<a name="#list_allowed-firmware"></a>
+### list allowed firmware
 
