@@ -15,8 +15,7 @@ functionality | method | endpoint
 [expedite upgrade for switch](#expedite-upgrade-for-switch) | GET | `/node/<node-id>/expedite_upgrade`
 [list switch-related network settings](#list-switch-related-settings) | GET |  `/node/does_mac_exist?
 [update switch-related network settings](#update-switch-related-settings) | HECK | `/wha/wha`
-[list allowed firmware](#list-allowed-firmware)
-
+[list allowed firmware](#list-allowed-firmware) | SHECK | `ma/ma`
 
  <a name="list-switches"></a>
 ### list switches
