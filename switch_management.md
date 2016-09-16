@@ -537,6 +537,7 @@ poe `status`, one of:
 * "other fault"
 * "requesting power"
 
+
  <a name="delete-switch"></a>
 ### delete switch
 `DELETE /switch/<switch-id>`
