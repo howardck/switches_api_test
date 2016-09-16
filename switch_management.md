@@ -619,6 +619,7 @@ Call this endpoint as a double-check when a user is entering the MAC of an Acces
 { 
 	"node_exists" : false 
 }
+````
 
 <a name="update-switch-related-settings"></a>
 ### update switch-related network settings
