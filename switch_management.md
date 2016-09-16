@@ -9,13 +9,13 @@ functionality | method | endpoint
 [update switch](#update-switch) | PUT | `/switch/<switch-id>`
 [get switch](#get-node) | GET | `/switch/<switch-id>`
 [delete switch](#delete-switch) | DELETE | `/switch/<switch-id>`
-[reboot switch](#reboot-switch) | GET | `/node/<node-id>/reboot`
-[reset port](#reset-port) | GET | `/node/<node-id>/allowed-channels`
-[enable pairing for switch](#enable-pairing-for-switch) | GET | `/node/<node-id>/enable_pairing`
-[expedite upgrade for switch](#expedite-upgrade-for-switch) | GET | `/node/<node-id>/expedite_upgrade`
-[list switch-related network settings](#list-switch-related-settings) | MEC |  `/node/does_mac_exist?`
-[update switch-related network settings](#update-switch-related-settings) | HECK | `/wha/wha`
-[list allowed firmware](#list-allowed-firmware) | SHECK | `ma/ma`
+[reboot switch](#reboot-switch) | GET | `/switch/<switch-id>/reboot`
+[reset port](#reset-port) | GET | `/switch/<switch-id>/reset_port/<port-number>`
+[enable pairing for switch](#enable-pairing-for-switch) | GET | `/switch/<switch-id>/enable_pairing`
+[expedite upgrade for switch](#expedite-upgrade-for-switch) | GET | `/switch/<switch-id>/expedite_upgrade`
+[list switch-related network settings](#list-switch-related-settings) | GET |  `/switch/network/<network-id>/settings`
+[update switch-related network settings](#update-switch-related-settings) | PUT | `/switch/network/<network-id>/settings`
+[list allowed firmware](#list-allowed-firmware) | GET | `/switch/network/<network-id>/allowed_firmware`
 
  <a name="list-switches"></a>
 ### list switches
@@ -577,7 +577,7 @@ The API returns either an HTTP status code 200 on success or 4xx in the case of 
 
  <a name="reset-port"></a>
 ### reset port
-`GET /switch/<switch-id>/reset_port/<port_number>`
+`GET /switch/<switch-id>/reset_port/<port-number>`
 
 Reset a port.
 
