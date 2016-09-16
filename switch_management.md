@@ -538,7 +538,8 @@ poe `status`, one of:
 * "requesting power"
 
 
- <a name="delete-switch"></a>
+
+<a name="delete-switch"></a>
 ### delete switch
 `DELETE /switch/<switch-id>`
 
