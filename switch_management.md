@@ -9,7 +9,6 @@ functionality | method | endpoint
 [update switch](#update-switch) | PUT | `/switch/<switch-id>`
 [get switch](#get-node) | GET | `/switch/<switch-id>`
 [delete switch](#delete-switch) | DELETE | `/switch/<switch-id>`
-
 [reboot switch](#reboot-node) | GET | `/node/<node-id>/reboot`
 [reset switch](#get-allowed-channels-for-node) | GET | `/node/<node-id>/allowed-channels`
 [enable pairing for switch](#enable-pairing-for-node) | GET | `/node/<node-id>/enable_pairing`
