@@ -713,7 +713,6 @@ fields | type | description | required
 `community` | string | Desired name of this community.<br>:small_orange_diamond:Example value: `"comm1"` <br/>:small_orange_diamond:Allowed chars: `A-Z, a-z, 0-9` | required
 `firmware` | string | Indicates any firmware changes being made on this network, followed by a single JSON map with model names as keys.<br>:small_orange_diamond:Example value: `@@@@@` <br/>:small_orange_diamond:Allowed chars: `@@@@@` | required @@@@@ ;?????
 `tag` | string | Which firmware should run on the associated mode of switch (????). <br>:small_orange_diamond:Example value: `24.0` <br/>:small_orange_diamond:Allowed chars: `0-9 and .` | required
-`comment` | string | User comments associated with the voucher(s), 64 characters max. <br>:small_orange_diamond:Example value: `"phase1"` <br/>:small_orange_diamond:Allowed chars: `a-z, 0-9` | required
 
 <a name="list_allowed-firmware"></a>
 ### list allowed firmware
