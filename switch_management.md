@@ -653,6 +653,7 @@ The API either returns HTTP status code 200 (success) if the request is successf
 ````
 
 ###### Top level properties
+-- | --
 `disable_upgrade` | indicates whether the switches on this network will automatically upgrade their firmware.
 `enable_snmp` | indicates whether or not this network allows snmp communities.
 `community` | the name assigned to this community.
@@ -661,6 +662,8 @@ The API either returns HTTP status code 200 (success) if the request is successf
 ###### Firmware
 This section is organized as a map of model name to properties.
 
+
+-- | --
 `tag` | the firmware tag running on the relevant model on this network.
 `build` | the firmware build running on the relevant model on this network.
 
@@ -669,7 +672,52 @@ This section is organized as a map of model name to properties.
 ### update switch-related network settings
 `PUT /switch/network/<network_id>/settings`
 
+##### example request
+`PUT https://api.cloudtrax.com/switch/network/123456/settings`
+
+##### example input
+
+````json
+{
+  "disable_upgrade": false,
+  "enable_snmp": true,
+  "communities": [
+    {
+      "name": "work_comm",
+      "id": 11,
+      "action": "update",
+      "access": "write" 
+    }
+  ],
+  "firmware": 
+    {
+      "OMS24":
+        {
+          "tag": "v3" 
+        }
+    },
+    {
+      "OMS8":
+        {
+          "tag": "v4" 
+        }
+    }
+}bb 	`
+````
+
+###### JSON detail
+fields | type | description | required
+----- | ----- | ----- | -----
+`disable_upgrade` | bool | If true, this network's switches will not automatically upgrade their firmware. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed chars: `true`/`false` | optional
+`enable_snmp` | bool | This network allows the use of snmp communities. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed chars: `true`/`false` | required
+`community` | string | Desired name of this community.<br>:small_orange_diamond:Example value: `"comm1"` <br/>:small_orange_diamond:Allowed chars: `A-Z, a-z, 0-9` | required
+`firmware` | string | Indicates any firmware changes being made on this network, followed by a single JSON map with model names as keys.<br>:small_orange_diamond:Example value: `@@@@@` <br/>:small_orange_diamond:Allowed chars: `@@@@@` | required @@@@@ ;?????
+`tag` | string | Which firmware should run on the associated mode of switch (????). <br>:small_orange_diamond:Example value: `24.0` <br/>:small_orange_diamond:Allowed chars: `0-9 and .` | required
+`comment` | string | User comments associated with the voucher(s), 64 characters max. <br>:small_orange_diamond:Example value: `"phase1"` <br/>:small_orange_diamond:Allowed chars: `a-z, 0-9` | required
 
 <a name="list_allowed-firmware"></a>
 ### list allowed firmware
 `GET /switch/network/<network_id>/allowed_firmware`
+
+##### example request
+`GET https://api.cloudtrax.com/switch/network/123456/allowed_firmware`
