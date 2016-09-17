@@ -694,9 +694,7 @@ This section is organized as a map of model name to properties.
       "OMS24":
         {
           "tag": "v3" 
-        }
-    },
-    {
+        },
       "OMS8":
         {
           "tag": "v4" 
