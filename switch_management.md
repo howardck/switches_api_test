@@ -702,7 +702,7 @@ This section is organized as a map of model name to properties.
           "tag": "v4" 
         }
     }
-}bb 	`
+}
 ````
 
 ###### JSON detail
