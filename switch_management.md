@@ -653,7 +653,7 @@ The API either returns HTTP status code 200 (success) if the request is successf
 ````
 
 ###### Top level properties
-TTT | TTT
+field | description
 --- | ---
 `disable_upgrade` | indicates whether the switches on this network will automatically upgrade their firmware.
 `enable_snmp` | indicates whether or not this network allows snmp communities.
@@ -663,12 +663,7 @@ TTT | TTT
 ###### Firmware
 This section is organized as a map of model name to properties.
 
-fields | type | description | required
------ | ----- | ----- | -----
-`disable_upgrade` | bool | If true, this network's switches will not automatically upgrade their firmware. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed chars: `true`/`false` | optional
-
-
-TEST | TEST
+field | description
 ----- | -----
 `tag` | the firmware tag running on the relevant model on this network.
 `build` | the firmware build running on the relevant model on this network.
