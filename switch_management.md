@@ -653,7 +653,7 @@ The API either returns HTTP status code 200 (success) if the request is successf
 ````
 
 ###### Top level properties
- | 
+TTT | TTT
 --- | ---
 `disable_upgrade` | indicates whether the switches on this network will automatically upgrade their firmware.
 `enable_snmp` | indicates whether or not this network allows snmp communities.
