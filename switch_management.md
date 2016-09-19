@@ -662,8 +662,13 @@ The API either returns HTTP status code 200 (success) if the request is successf
 ###### Firmware
 This section is organized as a map of model name to properties.
 
+fields | type | description | required
+----- | ----- | ----- | -----
+`disable_upgrade` | bool | If true, this network's switches will not automatically upgrade their firmware. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed chars: `true`/`false` | optional
 
--- | --
+
+TEST | TEST
+----- | -----
 `tag` | the firmware tag running on the relevant model on this network.
 `build` | the firmware build running on the relevant model on this network.
 
