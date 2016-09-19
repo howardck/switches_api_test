@@ -667,6 +667,10 @@ This section is organized as a map of model name to properties.
 `tag` | the firmware tag running on the relevant model on this network.
 `build` | the firmware build running on the relevant model on this network.
 
+##### output
+On success the API responds with a status code 200. In the case of an error, the API responds with an explanation in JSON.
+
+Note that when a community is updated, its id is changed, reflecting the way communities are handled at the switch level: the original community is deleted and a new one created in its place. The original id is no longer valid.
 
 <a name="update-switch-related-settings"></a>
 ### update switch-related network settings
@@ -718,3 +722,85 @@ fields | type | description | required
 
 ##### example request
 `GET https://api.cloudtrax.com/switch/network/123456/allowed_firmware`
+
+##### output
+
+The API returns a list of allowed firmware for the network, organized by model name.
+
+##### example output
+````json
+{
+  "allowed_firmware": {
+    "OMS24": [
+      {
+        "tag": "phase1",
+        "build": "IMG-0.00.02" 
+      },
+      {
+        "tag": "v3",
+        "build": "IMG-0.00.03" 
+      },
+      {
+        "tag": "v4",
+        "build": "IMG-0.00.04" 
+      },
+      {
+        "tag": "v6",
+        "build": "IMG-0.00.06" 
+      },
+      {
+        "tag": "v7",
+        "build": "IMG-0.00.07" 
+      }
+    ],
+    "OMS8": [
+      {
+        "tag": "phase1",
+        "build": "IMG-0.00.02" 
+      },
+      {
+        "tag": "v3",
+        "build": "IMG-0.00.03" 
+      },
+      {
+        "tag": "v4",
+        "build": "IMG-0.00.04" 
+      },
+      {
+        "tag": "v5",
+        "build": "IMG-0.00.05" 
+      },
+      {
+        "tag": "v6",
+        "build": "IMG-0.00.06" 
+      },
+      {
+        "tag": "v7",
+        "build": "IMG-0.00.07" 
+      }
+    ],
+    "OMS48": [
+      {
+        "tag": "phase1",
+        "build": "IMG-0.00.02" 
+      },
+      {
+        "tag": "v3",
+        "build": "IMG-0.00.03" 
+      },
+      {
+        "tag": "v4",
+        "build": "IMG-0.00.04" 
+      },
+      {
+        "tag": "v6",
+        "build": "IMG-0.00.06" 
+      },
+      {
+        "tag": "v7",
+        "build": "IMG-0.00.07" 
+      }
+    ]
+  }
+}
+````
