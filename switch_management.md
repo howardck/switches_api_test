@@ -481,7 +481,7 @@ Allowed values for `poe.status`:
 * `"requesting power"`
 
 
- <a name="update-switch"></a>
+<a name="update-switch"></a>
 ### update switch
 `PUT /switch/<switch-id>`
 
