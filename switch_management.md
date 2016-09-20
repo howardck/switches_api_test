@@ -6,8 +6,8 @@ functionality | method | endpoint
 --- | --- | ---
 [list switches](#list-switches) | GET | `/switch/network/<network-id>/list`
 [create switch](#create-switch) | POST | `/switch/network/<network-id>`
-[update switch](#update-switch) | PUT | `/switch/<switch-id>`
 [get switch](#get-switch) | GET | `/switch/<switch-id>`
+[update switch](#update-switch) | PUT | `/switch/<switch-id>`
 [delete switch](#delete-switch) | DELETE | `/switch/<switch-id>`
 [reboot switch](#reboot-switch) | GET | `/switch/<switch-id>/reboot`
 [reset port](#reset-port) | GET | `/switch/<switch-id>/reset_port/<port-number>`
@@ -181,59 +181,6 @@ The API either returns HTTP status code 200 (success) or an HTTP error and JSON 
  	"switch_id" : 123456
 }
 ````
-
- <a name="update-switch"></a>
-### update switch
-`PUT /switch/<switch-id>`
-
-Change the settings for an existing switch.
-
-##### example request
-`PUT https://api.cloudtrax.com/switch/12345`
-
-##### example input
-
-````json
-{
-    "firmware": {
-        "active_partition": 1
-    },
-    "ports": [
-        {
-            "enable": true,
-            "id": "9",
-            "poe": {
-                "enable": true,
-                "power_limit_type": "manual",
-                "power_limit_user_w": 30,
-                "priority": "low" 
-            },
-            "tagged_vlans": "1,2,4,3,9,8,8,10,10,4000-4094,12,991-994",
-            "untagged_vlans": "1",
-            "vlan_id": 1
-        }
-    ],
-    "summary_info": {
-        "description": "",
-        "name": "switch john" 
-    }
-}
-````
-
-The API tries to create ranges for both tagged and untagged vlans. In this example the API changes tagged vlans to "1-4,8-10,12,991-994,4000-4094".
-
-Allowed values for `poe.priority`:
-
-* `"low"`
-* `"medium"`
-* `"high"`
-* `"critical"`
-
-Allowed values for `poe.limit_type`: 
-
-* `"auto"`
-* `"manual"`
-
 
 <a name="get-switch"></a>
 ### get switch
@@ -534,6 +481,58 @@ Allowed values for `poe.status`:
 * `"requesting power"`
 
 
+ <a name="update-switch"></a>
+### update switch
+`PUT /switch/<switch-id>`
+
+Change the settings for an existing switch.
+
+##### example request
+`PUT https://api.cloudtrax.com/switch/12345`
+
+##### example input
+
+````json
+{
+    "firmware": {
+        "active_partition": 1
+    },
+    "ports": [
+        {
+            "enable": true,
+            "id": "9",
+            "poe": {
+                "enable": true,
+                "power_limit_type": "manual",
+                "power_limit_user_w": 30,
+                "priority": "low" 
+            },
+            "tagged_vlans": "1,2,4,3,9,8,8,10,10,4000-4094,12,991-994",
+            "untagged_vlans": "1",
+            "vlan_id": 1
+        }
+    ],
+    "summary_info": {
+        "description": "",
+        "name": "switch john" 
+    }
+}
+````
+
+The API tries to create ranges for both tagged and untagged vlans. In this example the API changes tagged vlans to "1-4,8-10,12,991-994,4000-4094".
+
+Allowed values for `poe.priority`:
+
+* `"low"`
+* `"medium"`
+* `"high"`
+* `"critical"`
+
+Allowed values for `poe.limit_type`: 
+
+* `"auto"`
+* `"manual"`
+
 
 <a name="delete-switch"></a>
 ### delete switch
@@ -653,7 +652,7 @@ field | description
 ##### output
 On success the API responds with a status code 200. In the case of an error, the API responds with an explanation in JSON.
 
-Note that when a community is updated, its id is changed, reflecting the way communities are handled at the switch level: the original community is deleted and a new one created in its place. The original id is no longer valid.
+Note that when a community is updated, its id is changed. This reflects the way communities are handled at the switch level: the original community is deleted and a new one created in its place. Consequently the original id is no longer valid.
 
 <a name="update-switch-related-settings"></a>
 ### update switch-related network settings
