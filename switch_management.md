@@ -22,7 +22,7 @@ functionality | method | endpoint
 
 `GET /switch/network/<network-id>/list`
 
-Retrieve all switch-related information on switches in the given network.
+Retrieve a list of all switches belonging to the given network, with detailed information.
 
 ##### example request
 `GET https://api.cloudtrax.com/switch/network/12345/list`
@@ -154,10 +154,7 @@ The API either returns HTTP status code 200 (success) or an HTTP error and JSON 
 ### create switch
 `POST /switch/network/<network-id>`
 
-Create a new switch entry in the specified network, with characteristics defined by the JSON package comprising the body of the HTTP Request. 
-
-[@@@ redmine docs says "If the MAC already exists, the following will happen", without specifying the following. @@@]
-
+Create a new switch entry for the specified network, with characteristics defined by the JSON package comprising the body of the HTTP Request. 
 
 ##### example request
 `POST https://api.cloudtrax.com/switch/network/12345`
@@ -586,7 +583,7 @@ Reset a port.
 
 ##### output
 
-The API either returns HTTP status code 200 (success) or an HTTP error and JSON describing the error in case of failure.  [@@@ ??? ]
+The API either returns HTTP status code 200 (success) or an HTTP error and JSON describing the error in case of failure.
 
  <a name="enable-pairing-for-switch"></a>
 ### enable pairing for switch
