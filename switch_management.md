@@ -518,20 +518,20 @@ Retrieve a switch.
 }
 ````
 
-port `status`, one of:
+Allowed values for `ports[n].status`:
 
-* "up"
-* "down"
+* `"up"`
+* `"down"`
 
-poe `status`, one of:
+Allowed values for `poe.status`:
 
-* "disabled"
-* "searching"
-* "delivering power"
-* "test mode"
-* "fault"
-* "other fault"
-* "requesting power"
+* `"disabled"`
+* `"searching"`
+* `"delivering power"`
+* `"test mode"`
+* `"fault"`
+* `"other fault"`
+* `"requesting power"`
 
 
 
