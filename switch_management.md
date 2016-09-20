@@ -7,7 +7,7 @@ functionality | method | endpoint
 [list switches](#list-switches) | GET | `/switch/network/<network-id>/list`
 [create switch](#create-switch) | POST | `/switch/network/<network-id>`
 [update switch](#update-switch) | PUT | `/switch/<switch-id>`
-[get switch](#get-node) | GET | `/switch/<switch-id>`
+[get switch](#get-switch) | GET | `/switch/<switch-id>`
 [delete switch](#delete-switch) | DELETE | `/switch/<switch-id>`
 [reboot switch](#reboot-switch) | GET | `/switch/<switch-id>/reboot`
 [reset port](#reset-port) | GET | `/switch/<switch-id>/reset_port/<port-number>`
@@ -231,8 +231,8 @@ Allowed values for `poe.priority`:
 
 Allowed values for `poe.limit_type`: 
 
-* "auto"
-* "manual"
+* `"auto"`
+* `"manual"`
 
 
 <a name="get-switch"></a>
@@ -543,21 +543,6 @@ Delete an existing switch.
 
 ##### example request
 `DELETE https://api.cloudtrax.com/switch/123456`
-
-##### example output
-
-Note the use of error code 1009 to indicate success.
-
-````json
-{
-	"code": 1009,
-	"message": "Success.",
-	"context": "update_node",
-	"values": {
-
-	}
-}
-````
 
  <a name="reboot-switch"></a>
 ### reboot switch
