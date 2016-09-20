@@ -154,7 +154,7 @@ The API either returns HTTP status code 200 (success) or an HTTP error and JSON 
 ### create switch
 `POST /switch/network/<network-id>`
 
-Create a new switch entry for the specified network, with characteristics defined by the JSON package comprising the body of the HTTP Request. 
+Create a new switch entry for the specified network, with characteristics defined by the JSON package in the body of the HTTP Request. 
 
 ##### example request
 `POST https://api.cloudtrax.com/switch/network/12345`
@@ -235,7 +235,7 @@ Allowed values for `poe.limit_type`:
 * "manual"
 
 
- <a name="get-switch"></a>
+<a name="get-switch"></a>
 ### get switch
 `GET /switch/<switch-id>`
 
