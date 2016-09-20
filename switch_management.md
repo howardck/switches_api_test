@@ -224,10 +224,10 @@ The API tries to create ranges for both tagged and untagged vlans. In this examp
 
 Allowed values for `poe.priority`:
 
-* "low"
-* "medium"
-* high"
-* critical"
+* `"low"`
+* `"medium"`
+* `"high"`
+* `"critical"`
 
 Allowed values for `poe.limit_type`: 
 
