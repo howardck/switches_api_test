@@ -692,8 +692,8 @@ Note that when a community is updated, its id is changed. This reflects the way 
 ###### JSON detail
 fields | type | description | required
 ----- | ----- | ----- | -----
-`disable_upgrade` | bool | If true, this network's switches will not automatically upgrade their firmware. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed chars: `true`/`false` | optional
-`enable_snmp` | bool | This network allows the use of snmp communities. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed chars: `true`/`false` | required
+`disable_upgrade` | bool | If true, this network's switches will not automatically upgrade their firmware. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed entries: `true/false` | optional
+`enable_snmp` | bool | This network allows the use of snmp communities. <br/>:small_orange_diamond:Example value: `true` <br/>:small_orange_diamond:Allowed entries: `true/false` | required
 `community` | string | Desired name of this community.<br>:small_orange_diamond:Example value: `"comm1"` <br/>:small_orange_diamond:Allowed chars: `A-Z, a-z, 0-9` | required
 `firmware` | string | Indicates any firmware changes being made on this network, described by a single JSON map with model names as keys.
 `tag` | string | Which firmware should run on the associated model of switch. <br>:small_orange_diamond:Example value: `"phase1"` <br/>:small_orange_diamond:Allowed chars: `a-z, 0-9` | required
